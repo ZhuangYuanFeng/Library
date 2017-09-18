@@ -1,0 +1,33 @@
+<!--addBook.wxml-->
+<view class="newBookInfo">
+  <view class="imgbox">
+    <image src="{{imgURL}}" class="img"></image>
+  </view>
+  <view class="upbtnbox">
+    <button type="default" class="upbtn" bindtap="upload">上传照片</button>
+  </view>
+</view>
+<view class="user-intro">
+  <form bindsubmit="formSubmit">
+    <view class="typebox">
+      <radio-group class="radio-group" bindchange="radioChange" name="typevalue">
+        <view class="radio" wx:for="{{booktype}}" wx:key="{{index}}">
+          <radio value="{{item.name}}" />
+          {{item.value}}
+        </view>
+      </radio-group>
+    </view>
+    <view class="namebox">
+      <input type="text" name="bookname" placeholder="请输入本书书名" placeholder-style="color:#b1b1b1;"/>
+    </view>
+    <view class="authorbox">
+      <input type="text" name="author" placeholder="请输入本书作者" placeholder-style="color:#b1b1b1;"/>
+    </view>
+    <view class="introbox">
+      <textarea name="intro" placeholder="请输入你的介绍" placeholder-style="color:#b1b1b1;"/>
+    </view>
+    <view class="btn-are">
+      <button class="submitbook" formType="submit">提交</button>
+    </view>
+  </form>
+</view>

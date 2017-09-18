@@ -1,0 +1,50 @@
+/* booktAll.wxss */
+.title{
+   text-align: center; 
+  /* background-color: #dbdbdb; */
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+}
+.booklist{
+  width: 750rpx;
+  background-color: #fafafa;
+}
+.weekBook1{
+  width: 41%;
+  height: 400rpx;
+   margin-left: 6%;
+  display:inline-block;
+  background-color: #fff;   
+  text-align: center;
+  margin-top: 10rpx;
+  padding-top: 10rpx;
+  border: 3rpx solid #dbdbdb;
+  box-shadow: 5rpx 5rpx 5rpx #dbdbdb;
+}
+.imgBox{
+  width: 90%;
+  height: 320rpx;
+  display: inline-block;
+}
+.hadOut{
+  position: absolute;
+  width: 80rpx;
+  height: 80rpx;
+}
+.bookimg{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+.bookName{
+  width: 90%;
+  height: 60rpx;
+  display: inline-block;
+  line-height: 60rpx;
+  font-size: 20rpx;
+  border-top: 3rpx solid #e1e1e1;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}

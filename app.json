@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/login",
+    
+    "pages/bookShelf/bookshelf",
+    "pages/addBook/addBook",
+    "pages/bookpage/bookpage",
+    "pages/logs/logs",
+    "pages/index/booktAll",
+    "pages/login/login"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "豌豆图书馆",
+    "navigationBarTextStyle": "#006600"
+  },
+  "tabBar": {
+    "color": "#006633",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "pages/imgs/index.png",
+        "selectedIconPath": "pages/imgs/index_ac.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/bookShelf/bookshelf",
+        "iconPath": "pages/imgs/shelf.png",
+        "selectedIconPath": "pages/imgs/shelf_ac.png",
+        "text": "我的书架"
+      },
+      {
+        "pagePath": "pages/addBook/addBook",
+        "iconPath": "pages/imgs/add.png",
+        "selectedIconPath": "pages/imgs/add_ac.png",
+        "text": "添加书籍"
+      }
+    ]
+  }
+}

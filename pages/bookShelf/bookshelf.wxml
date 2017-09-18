@@ -1,0 +1,39 @@
+<!--bookshelf.wxml-->
+<view class="shelf-bg" style="background-image: url('{{userInfo.avatarUrl}}')">
+</view>
+<view class="userinfo">
+    <block wx:if="{{hasUserInfo}}">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="userinfo-nickname">"不积硅步，无以至千里"</text>
+    </block>
+</view>
+<view class="borow_info">
+  <text style="color:#aaa;">借阅记录</text>
+</view>
+<!--以下是未还记录-->
+<view class="borrowTable">
+  <view class="borrowMessage" wx:for="{{borrow}}" wx:key="id"wx:if="{{item.rtime == null}}">
+    <view class="brw_bookName brwbox">
+      <text>{{item.bookid}}</text>
+    </view>
+    <view class="brwbox">
+      <text>{{item.bookname}}</text>
+    </view>
+    <view class="brwbox">
+      <button class="ret_book" bindtap="returnBook" data-bookid="{{item.bookid}}" data-bookname="{{item.bookname}}">归还</button>
+    </view>
+  </view>
+<!--以下是已归还记录-->
+  <view class="borrowMessage2" wx:for="{{borrow}}" wx:key="id" wx:if="{{item.rtime != null}}" hidden='{{index>4}}'>
+    <view class="brw_bookName brwbox">
+      <text>{{item.bookid}}</text>
+    </view>
+    <view class="brwbox">
+      <text>{{item.bookname}}</text>
+    </view>
+    <view class="brwbox">
+      <text>已还</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+<!--login.wxml-->
+<view class="logo">
+  <image src="../imgs/logo.png"></image>
+</view>
+<view class="loginBtn">
+  <button bindtap="login">点击登录</button>
+</view>

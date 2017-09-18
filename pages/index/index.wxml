@@ -1,0 +1,86 @@
+<!--index.wxml-->
+<view class="logobox">
+  <image src="../imgs/logo.png" class="logo"></image>
+</view>
+<view class="week_title">
+  <text class="yinghao">『 </text><text>本周推荐</text><text class="yinghao"> 』</text>
+</view>
+<view class="week_box">
+  <scroll-view class="week_book" scroll-x style="width: 100%">
+    <view class="weekBook1" wx:for="{{bookinfo}}" wx:key="{{index}}" >
+      <view class="imgBox">
+        <image src="../imgs/out.png" class="hadOut" wx:if="{{item.handing == 1}}"></image>
+        <image src="{{item.bookimg}}" class="bookimg" bindtap="getmes" data-item="{{item}}"></image>
+      </view>
+      <view class="bookName">
+        {{item.bookname}}
+      </view>
+    </view> 
+  </scroll-view>
+</view>
+
+<view class="nav">
+  <view class="nav-line" wx:for="{{navli}}" wx:key="index">
+    <view class="nav-li" bindtap="navbtn" data-index="{{index}}">{{item.name}}</view>
+  </view>
+</view>
+
+<view class="bookTitle">
+  <text class="yinghao">『 </text><text>古典名著</text><text class="yinghao"> 』</text>
+</view>
+<view class="classify_list" >
+  <view class="typeBox" wx:for="{{classicalbook}}"  wx:key="{{index}}" wx:if="{{index < 4}}">
+    <view class="imgBox" >
+      <image src="../imgs/out.png" class="hadOut" wx:if="{{item.handing == 1}}"></image>
+      <image src="{{item.bookimg}}" class="bookimg" bindtap="getmes" data-item="{{item}}"></image>
+    </view>
+    <view class="bookName">
+      {{item.bookname}}
+    </view>
+  </view>
+</view>
+
+<view class="bookTitle">
+  <text class="yinghao">『 </text><text>现代文学</text><text class="yinghao"> 』</text>
+</view>
+<view class="classify_list">
+ <view class="typeBox" wx:for="{{modernbook}}" wx:key="{{index}}" wx:if="{{index < 4}}">
+    <view class="imgBox" >
+      <image src="../imgs/out.png" class="hadOut" wx:if="{{item.handing == 1}}"></image>
+      <image src="{{item.bookimg}}" class="bookimg" bindtap="getmes" data-item="{{item}}"></image>
+    </view>
+    <view class="bookName">
+      {{item.bookname}}
+    </view>
+  </view>
+</view>
+
+<view class="bookTitle">
+  <text class="yinghao">『 </text><text>技术资料</text><text class="yinghao"> 』</text>
+</view>
+<view class="classify_list">
+  <view class="typeBox" wx:for="{{techbook}}" wx:key="{{index}}" wx:if="{{index < 4}}">
+    <view class="imgBox" >
+      <image src="../imgs/out.png" class="hadOut" wx:if="{{item.handing == 1}}"></image>
+      <image src="{{item.bookimg}}" class="bookimg" bindtap="getmes" data-item="{{item}}"></image>
+    </view>
+    <view class="bookName">
+      {{item.bookname}}
+    </view>
+  </view>
+</view>
+
+<view class="bookTitle">
+  <text class="yinghao">『 </text><text>各种杂志</text><text class="yinghao"> 』</text>
+</view>
+<view class="classify_list">
+  <view class="typeBox" wx:for="{{magazine}}" wx:key="{{index}}" wx:if="{{index < 4}}">
+    <view class="imgBox" >
+      <image src="../imgs/out.png" class="hadOut" wx:if="{{item.handing == 1}}"></image>
+      <image src="{{item.bookimg}}" class="bookimg" bindtap="getmes" data-item="{{item}}"></image>
+    </view>
+    <view class="bookName">
+      {{item.bookname}}
+    </view>
+  </view>
+</view>
