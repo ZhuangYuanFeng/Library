@@ -232,7 +232,7 @@ Page({
         } else if (res.cancel) {
           console.log('取消')
         }
-        that.getLogs();
+        that.getbook();
       }
     })
   },

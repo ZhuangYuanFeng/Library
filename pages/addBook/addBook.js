@@ -16,6 +16,7 @@ Page({
       {name:'2',value:'技术资料'},
       {name:'3',value:'各种杂志'}
     ],
+    bookimg:'http://static.oneplus.cn/data/attachment/forum/201411/15/144007pxbz8zbbm20vfht4.jpg.w_768.jpg',
     imgname:'',
     up_type:'',
     up_name:'',
@@ -30,7 +31,6 @@ Page({
     
   
   },
-
   // 上传图片，返回图片名
   upload(){
     var that = this;
@@ -64,6 +64,9 @@ Page({
         })
       }
     })
+  },
+  formReset: function () {
+    console.log('form发生了reset事件')
   },
   //提交表单
   formSubmit: function (e) {
@@ -103,9 +106,6 @@ Page({
                   icon: 'success',
                   duration: 2000
                 })
-                that.setData({
-                  imgURL: ''
-                })
               },
               fail(res){
                 
@@ -118,6 +118,9 @@ Page({
             console.log('用户点击取消')
           }
         }
+      })
+      that.setData({
+        imgURL: ''
       })
     } 
   },

@@ -14,8 +14,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "豌豆图书馆",
-    "navigationBarTextStyle": "#006600",
-    "enablePullDownRefresh":true
+    "navigationBarTextStyle": "#006600"
   },
   "tabBar": {
     "color": "#006633",
