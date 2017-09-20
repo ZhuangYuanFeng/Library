@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
@@ -8,18 +8,40 @@ Page({
     openid:'',
     hasUserInfo: true,
     bookInfo: [],
-    borrow: [
-      { id: 0, bookname: "天翻夜谈", state: "借阅中" },
-      { id: 1, bookname: "达芬奇的密码", state: "借阅中" },
-      { id: 2, bookname: "奥特曼大全", state: "借阅中" },
-      { id: 3, bookname: "蜡笔小新", state: "借阅中" }
-    ],
+    borrow: [],
     turnback:[],
+    checkbook:[],
+    btnShow:false,
     b_img:'../imgs/logo.png'
   },
+  onPullDownRefresh: function () {
+    wx.startPullDownRefresh()
+    wx.showNavigationBarLoading()
+    this.getLogs()
+    if(this.data.borrow != null){
+      wx.showToast({
+        title: '刷新成功',
+        duration:2000,
+        complete(){
+          wx.hideNavigationBarLoading()
+          wx.stopPullDownRefresh()
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '刷新失败',
+        duration:2000,
+        complete(){
+          wx.hideNavigationBarLoading()
+          wx.stopPullDownRefresh()
+        }
+      })
+    }
+  },
   //事件处理函数
-
   onLoad: function () {
+    var b_userinfo = app.globalData.userInfo;
+    console.log("b_userinfo",app.globalData.userInfo);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -27,7 +49,7 @@ Page({
         hasUserInfo: true
       })
       var openid = app.globalData.openid;
-      console.log(openid)
+      console.log("bookshelf:id",openid)
     } else {
       app.userInfoReadyCallback = res => {
         this.setData({
@@ -36,8 +58,9 @@ Page({
         })
       }
     }
-    this.getLogs();
     this.login();
+    this.getattendant();
+    // this.getLogs();
   },
   onShow(){
     this.getLogs();
@@ -48,7 +71,7 @@ Page({
       hasUserInfo: true
     })
   },
-
+// 还书功能
   returnBook(event){
     var that = this;
     console.log(event.target.dataset.bookname);
@@ -87,12 +110,31 @@ Page({
       }
     })   
   },
+  // 获取书籍关于审核
+  getbook(){
+    var that = this;
+    wx.request({
+      url: 'https://campusdaily.club/sql',
+      method:'GET',
+      success(res){
+        console.log("get bookat",res)
+        var dt = res.data.data;
+        that.setData({
+          checkbook:dt
+        })
+      },
+      fail: function () {
+        console.log('defeat!')
+      }
+    })
+  },
+// 获取用户书籍操作记录
   getLogs(){
     var that = this;
     wx.request({
       url: 'https://campusdaily.club/logs',
       data:{
-        openid: app.globalData.openid
+        openid: that.data.openid
       },
       method: 'GET',
       success: function (res) {
@@ -100,24 +142,20 @@ Page({
         var center = res.data.suc;
         that.setData({
           borrow : center
-        })
-        
+        }) 
       },
       fail: function () {
         console.log('defeat!')
-      },
-      complete: function () {
-        console.log('sql end!');
-
       }
     })
   },
+// 用户注册
   login() {
     console.log("try Login");
     var that = this;
-    if (app.globalData.openid) {
+    if (that.data.openid) {
       var userinfo = that.data.userInfo;
-      var openid = that.openid;
+      var openid = that.data.openid;
       console.log(openid);
       wx.request({
         url: 'https://campusdaily.club/data',
@@ -137,5 +175,65 @@ Page({
       })
     }
     // requestTask.abort();
-  }
+  },
+  //得到用户是否属于管理员
+  getattendant() {
+    var that = this;
+    wx.request({
+      url: 'https://campusdaily.club/users',
+      data: {
+        openid: that.data.openid
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log("是不是管理员",res.data[0].attendant)
+        var judge = res.data[0].attendant;
+        that.setData({
+          btnShow: judge
+        })
+      },
+      fail: function () {
+        console.log('defeat!')
+      }
+    })
+  },
+  //审核通过
+  passBook(event) {
+    var that = this;
+    console.log(event.target.dataset.bookname);
+    var bookid = event.target.dataset.bookid;
+    wx.showModal({
+      title: '注意',
+      content: '管理员是否允许:' + event.target.dataset.bookname+'通过审核',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('确定')
+          wx.request({
+            url: 'https://campusdaily.club/passbook',
+            data: {
+              // openid: that.data.openid,
+              bookid: bookid
+            },
+            success() {
+              wx.showToast({
+                title: '成功',
+                icon: 'success',
+                duration: 2000
+              })
+            },
+            fail() {
+              wx.showToast({
+                title: '失败',
+                icon: 'fail',
+                duration: 2000
+              })
+            }
+          });
+        } else if (res.cancel) {
+          console.log('取消')
+        }
+        that.getLogs();
+      }
+    })
+  },
 })

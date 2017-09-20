@@ -1,6 +1,5 @@
 //index.js
 //获取应用实例
-// const app = getApp()
 
 Page({
   data: {
@@ -45,7 +44,6 @@ Page({
         var magazine = [];
         console.log('onload data', dt);
         for (let i = 0; i < dt.length; i++) {
-          // console.log(dt[i].booktype);
           if (dt[i].booktype == 0) {
             classicalbook.push(dt[i]);
           } else if (dt[i].booktype == 1) {
@@ -80,11 +78,9 @@ Page({
     })
   },
   getmes:function(e){
-    // var index = parseInt(e.currentTarget.dataset.index);
     let item = e.currentTarget.dataset.item
     console.log("get:", item);
     wx.navigateTo({
-      // url: '../bookpage/bookpage?item='+JSON.stringify(item)
       url: '../bookpage/bookpage?bookname=' + 
       item.bookname + '&bookauthor=' + 
       item.bookauthor + '&bookimg=' + 

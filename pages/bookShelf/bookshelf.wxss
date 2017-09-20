@@ -1,16 +1,19 @@
 /* bookshelf.wxss */
 .shelf-bg{
-  width: 100%;
-  height: 400rpx;
+  width: 120%;
+  height: 500rpx;
   top:0;
   left:0;
   background-size: cover;
   background-position: center center;
+  transform: translate(-10%,-10%);
   filter: blur(10rpx);
   position: absolute;
   z-index: 1;
 }
 .userinfo {
+  width: 100%;
+  overflow: hidden;
   position: relative;
   z-index: 2;
   display: flex;
@@ -37,6 +40,18 @@
   z-index: 2;
 }
 
+.yanyu{
+  color: #333;
+  margin-top: 20rpx;
+  padding-bottom: 20rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.getbook{
+  margin-top: 20rpx;
+}
+
 .shelf_line{
    /* display: flex;  */
   white-space: nowrap;
@@ -48,7 +63,7 @@
 
 .borow_info{
   text-align: center;
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
   padding-top: 30rpx;
   position: relative;
   z-index: 2;

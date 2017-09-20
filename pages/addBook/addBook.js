@@ -1,5 +1,4 @@
 // addBook.js
-// const qiniuUploader = require("../addBook/qiniuUploader");
 Page({
 
   /**
@@ -71,12 +70,6 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
     var bookinfo = e.detail.value;
     var that = this;
-    // that.setdata({
-    //   up_type: res.data.typevalue,
-    //   up_name: res.data.bookname,
-    //   up_author: res.data.author,
-    //   up_intro: res.data.intro,
-    // });
     if (that.data.imgURL == ""){
       wx.showToast({
         title: '要上传图片哦',
@@ -87,12 +80,12 @@ Page({
       wx.showToast({
         title: '表单必须要填写完毕',
         icon: 'loading',
-        duration: 2000
+        // duration: 2000
       });
     }else{
       wx.showModal({
         title: '注意',
-        content: '你是真的真的真的想上传书籍？',
+        content: '书籍上传后，需要等待管理员通过审核，请耐心等待！',
         success: function (res) {
           if (res.confirm) {
             console.log('用户点击确定')
@@ -104,16 +97,22 @@ Page({
                 bookinfo: bookinfo
               },
               success(res) {
-                console.log(res.data)
+                console.log("hahahah")
                 wx.showToast({
-                  title: 'ok',
+                  title: '上传成功，请等待审核...',
                   icon: 'success',
                   duration: 2000
                 })
                 that.setData({
                   imgURL: ''
                 })
+              },
+              fail(res){
+                
               }
+            })
+            wx.switchTab({
+              url: '../index/index',
             })
           } else if (res.cancel) {
             console.log('用户点击取消')
