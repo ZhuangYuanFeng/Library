@@ -1,0 +1,15 @@
+<!--booktAll.wxml-->
+<view class="title">
+  <text>{{bookkind[booktype]}}</text>
+</view>
+<view class="booklist">
+  <view class="weekBook1" wx:for="{{bookinfo}}" wx:key="bookid" wx:if="{{item.booktype == booktype}}" hidden="{{item.bookat == 0}}">
+    <view class="imgBox">
+      <image src="../imgs/out.png" class="hadOut" wx:if="{{item.handing == 1}}"></image>
+      <image src="{{item.bookimg}}" class="bookimg" bindtap="getmes" data-item="{{item}}"></image>
+    </view>
+    <view class="bookName">
+      {{item.handing}}{{item.bookname}}
+    </view>
+  </view>
+</view>

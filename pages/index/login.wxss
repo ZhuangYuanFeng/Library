@@ -1,0 +1,15 @@
+/* login.wxss */
+.logo{
+  width: 200rpx;
+  height: 200rpx;
+  margin: 250rpx auto;
+}
+image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.loginBtn{
+  width: 80%;
+  margin: 0 auto;
+}

@@ -1,0 +1,122 @@
+/* bookshelf.wxss */
+.shelf-bg{
+  width: 120%;
+  height: 500rpx;
+  top:0;
+  left:0;
+  background-size: cover;
+  background-position: center center;
+  transform: translate(-10%,-10%);
+  filter: blur(10rpx);
+  position: absolute;
+  z-index: 1;
+}
+.userinfo {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  /* margin: 20rpx; */
+  margin-top: 100rpx;
+  border-radius: 50%;
+  border: 5rpx solid #f3f3f3;
+  position: relative;
+  z-index: 2;
+}
+
+.userinfo-nickname {
+  color: #333;
+  margin-top: 20rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.yanyu{
+  color: #333;
+  margin-top: 20rpx;
+  padding-bottom: 20rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.getbook{
+  margin-top: 20rpx;
+}
+
+.shelf_line{
+   /* display: flex;  */
+  white-space: nowrap;
+  margin-top: 50rpx;
+  position: relative;
+  z-index: 2;
+}
+
+
+.borow_info{
+  text-align: center;
+  /* margin-top: 20rpx; */
+  padding-top: 30rpx;
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+}
+.borrowMessage{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around; 
+  /* border-bottom: 2rpx dashed #aaa; */
+  margin-top: 40rpx;
+  position: relative;
+  z-index: 2;
+}
+.borrowMessage2{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around; 
+  /* border-bottom: 2rpx dashed #aaa; */
+  margin-top: 40rpx;
+  color: #aaa;
+  position: relative;
+  z-index: 2;
+}
+.brwbox{
+  width: 200rpx;
+  height: 100rpx;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-bottom: 2rpx dashed #aaa;
+  border-top: 2rpx dashed #aaa;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+}
+.brw_bookName{
+  /* text-align: left; */
+  overflow : hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;  
+  position: relative;
+  z-index: 2;
+}
+.ret_book{
+  width: 60%;
+  height: 60%;
+  font-size: 20rpx;
+  margin-top: 20rpx;
+  position: relative;
+  z-index: 2;
+}
